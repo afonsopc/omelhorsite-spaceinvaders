@@ -1,0 +1,99 @@
+import platform
+
+configs = platform.window.config.game
+
+# TITLE = "Space Invaders"
+TITLE = configs.title
+SCREEN_RESOLUTION = (configs.screen_resolution[0], configs.screen_resolution[1])
+FULLSCREEN_TIMEOUT = configs.fullscreen_timeout
+BACKGROUND_RESOLUTION = SCREEN_RESOLUTION
+BACKGROUND_IMAGE = "assets/background.png"
+BACKGROUND_MUSIC = "assets/background.ogg"
+BACKGROUND_MUSIC_VOLUME = configs.background_music_volume
+SOUND_EFFECTS_VOLUME = configs.sound_effects_volume
+FPS = configs.fps
+if SCREEN_RESOLUTION[0] < SCREEN_RESOLUTION[1]:
+    PLAYER_RESOLUTION = (SCREEN_RESOLUTION[0]/10, SCREEN_RESOLUTION[0]/10)
+elif SCREEN_RESOLUTION[0] > SCREEN_RESOLUTION[1]:
+    PLAYER_RESOLUTION = (SCREEN_RESOLUTION[1]/10, SCREEN_RESOLUTION[1]/10)
+else:
+    PLAYER_RESOLUTION = (SCREEN_RESOLUTION[0]/10, SCREEN_RESOLUTION[0]/10)
+
+PLAYER_VELOCITY = SCREEN_RESOLUTION[0]/1000
+PLAYER_LASER_RESOLUTION = (PLAYER_RESOLUTION[0]//1.2, PLAYER_RESOLUTION[1]//1.2)
+PLAYER_IMAGE = "assets/player_ship.png"
+PLAYER_LASER_IMAGE = "assets/player_ship_laser.png"
+PLAYER_LASER_VELOCITY = PLAYER_VELOCITY*1000
+PLAYER_SHOT_TIMEOUT = configs.player_shot_timeout
+PLAYER_LIFES = configs.player_lifes
+PLAYER_HIT_BLINKS = configs.player_hit_blinks
+PLAYER_BLINK_TIMEOUT = configs.player_blink_timeout
+PLAYER_STARTING_POS = (SCREEN_RESOLUTION[0]/2, SCREEN_RESOLUTION[1]/2)
+STATISTICS_MARGIN = (SCREEN_RESOLUTION[1]/100)*2
+STATISTICS_FONT_SIZE = int(SCREEN_RESOLUTION[1]//18.75)
+STATISTICS_FONT = "assets/GnuUnifontFull-Pm9P.ttf"
+STATISTICS_TIME_TEXT = configs.statistics_time_text
+STATISTICS_LIFES_TEXT = configs.statistics_lifes_text
+STATISTICS_POINTS_TEXT = configs.statistics_points_text
+STATISTICS_KILLS_TEXT = configs.statistics_kills_text
+STATISTICS_TIME_MARGIN_TOP = STATISTICS_MARGIN
+STATISTICS_LIFES_MARGIN_TOP = STATISTICS_TIME_MARGIN_TOP*4.5
+STATISTICS_POINTS_MARGIN_TOP = STATISTICS_TIME_MARGIN_TOP*7.8
+STATISTICS_KILLS_MARGIN_TOP = STATISTICS_TIME_MARGIN_TOP*11.4
+BUY_LIFES_TEXT = configs.buy_lifes_text
+BUY_LIFES_MARGIN = STATISTICS_MARGIN
+BUY_LIFES_MARGIN_TOP = STATISTICS_KILLS_MARGIN_TOP*1.35
+BUY_LIFES_FONT = "assets/GnuUnifontFull-Pm9P.ttf"
+BUY_LIFES_FONT_SIZE = int(STATISTICS_FONT_SIZE//1.5)
+BUY_LIFES_COLOR = (configs.buy_lifes_color[0], configs.buy_lifes_color[1], configs.buy_lifes_color[2])
+BUY_LIFES_COST = configs.buy_lifes_cost
+BUY_LIFES_TIMEOUT = configs.buy_lifes_timeout
+MUSIC_TOGGLE_FONT = "assets/GnuUnifontFull-Pm9P.ttf"
+MUSIC_TOGGLE_FONT_SIZE = int(STATISTICS_FONT_SIZE*1.5)
+MUSIC_TOGGLE_POS = (SCREEN_RESOLUTION[0]-(MUSIC_TOGGLE_FONT_SIZE*1.2), STATISTICS_MARGIN)
+MUSIC_TOGGLE_ON_TEXT = configs.music_toggle_on_text
+MUSIC_TOGGLE_OFF_TEXT = configs.music_toggle_off_text
+ENEMY_1_IMAGE = "assets/enemy_ship_1.png"
+ENEMY_1_LASER_IMAGE = "assets/enemy_ship_1_laser.png"
+ENEMY_2_IMAGE = "assets/enemy_ship_2.png"
+ENEMY_2_LASER_IMAGE = "assets/enemy_ship_2_laser.png"
+ENEMY_3_IMAGE = "assets/enemy_ship_3.png"
+ENEMY_3_LASER_IMAGE = "assets/enemy_ship_3_laser.png"
+ENEMY_4_IMAGE = "assets/enemy_ship_4.png"
+ENEMY_4_LASER_IMAGE = "assets/enemy_ship_4_laser.png"
+ENEMY_5_IMAGE = "assets/enemy_ship_5.png"
+ENEMY_5_LASER_IMAGE = "assets/enemy_ship_5_laser.png"
+ENEMIES_RESOLUTION = PLAYER_RESOLUTION
+ENEMIES_LASER_RESOLUTION = PLAYER_LASER_RESOLUTION
+ENEMIES_SHOT_TIMEOUT = configs.enemies_shot_timeout
+ENEMIES_SPAWN_TIMEOUT = configs.enemies_spawn_timeout
+ENEMIES_SPAWN_AREA_X = (SCREEN_RESOLUTION[0]/100, SCREEN_RESOLUTION[0]-(SCREEN_RESOLUTION[0]/13))
+ENEMIES_LASER_VELOCITY = PLAYER_LASER_VELOCITY/2
+ENEMIES_VELOCITY = PLAYER_VELOCITY*200
+GAME_OVER_FONT = "assets/Cantarell-ExtraBold.otf"
+GAME_OVER_FONT_SIZE = SCREEN_RESOLUTION[1]//10
+GAME_OVER_COLOR = (configs.game_over_color[0], configs.game_over_color[1], configs.game_over_color[2])
+GAME_OVER_SUBTEXT_FONT = "assets/Cantarell-Thin.otf"
+GAME_OVER_SUBTEXT_FONT_SIZE = SCREEN_RESOLUTION[1]//20
+GAME_OVER_TEXT_X_POS = SCREEN_RESOLUTION[0]/2
+GAME_OVER_GAME_OVER_POS = (GAME_OVER_TEXT_X_POS, SCREEN_RESOLUTION[1]/2.5)
+GAME_OVER_RETRY_POS = (GAME_OVER_TEXT_X_POS, SCREEN_RESOLUTION[1]/2)
+GAME_OVER_SEND_SCORE_POS = (GAME_OVER_TEXT_X_POS, SCREEN_RESOLUTION[1]/1.75)
+GAME_OVER_GAME_OVER_TEXT = configs.game_over_game_over_text
+GAME_OVER_RETRY_TEXT = configs.game_over_retry_text
+GAME_OVER_SEND_SCORE_FONT_SIZE = GAME_OVER_SUBTEXT_FONT_SIZE // 2
+GAME_OVER_SEND_SCORE_TEXT = configs.game_over_send_score_text
+SEND_SCORE_TIMEOUT = configs.send_score_timeout
+
+ENEMIES_PERCENTAGES = {"enemy_1": configs.enemies_percentages[0], "enemy_2": configs.enemies_percentages[1], "enemy_3": configs.enemies_percentages[2], "enemy_4": configs.enemies_percentages[3], "enemy_5": configs.enemies_percentages[4]}
+ENEMIES_LIFES = {"enemy_1": configs.enemies_lifes[0], "enemy_2": configs.enemies_lifes[1], "enemy_3": configs.enemies_lifes[2], "enemy_4": configs.enemies_lifes[3], "enemy_5": configs.enemies_lifes[4]}
+ENEMIES_POINTS = {"enemy_1":  configs.enemies_points[0], "enemy_2":  configs.enemies_points[1], "enemy_3": configs.enemies_points[2], "enemy_4": configs.enemies_points[3], "enemy_5": configs.enemies_points[4]}
+
+SHOOT_SOUNDS = ["assets/shoot_1.wav", "assets/shoot_2.wav", "assets/shoot_3.wav", "assets/shoot_4.wav", "assets/shoot_5.wav"]
+HIT_SOUNDS = ["assets/hit_1.wav", "assets/hit_2.wav", "assets/hit_3.wav", "assets/hit_4.wav"]
+KILL_SOUNDS = ["assets/kill_1.wav", "assets/kill_2.wav", "assets/kill_3.wav", "assets/kill_4.wav"]
+LIFE_SOUNDS = ["assets/life_1.wav", "assets/life_2.wav", "assets/life_3.wav"]
+MENU_SOUNDS = ["assets/menu_1.wav", "assets/menu_2.wav", "assets/menu_3.wav"]
+DIE_SOUNDS = ["assets/die_1.wav", "assets/die_2.wav", "assets/die_3.wav", "assets/die_4.wav"]
+HURT_SOUNDS = ["assets/hurt_1.wav", "assets/hurt_2.wav", "assets/hurt_3.wav"]
+SEND_SCORE_SOUNDS = ["assets/send_score_1.wav", "assets/send_score_2.wav", "assets/send_score_3.wav", "assets/send_score_4.wav"]
